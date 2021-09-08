@@ -1,14 +1,11 @@
 'use strict';
 
 // ====================================================================
-fetch('./assets/js/data.json')
-  .then((response) => {
-    console.log('завершился запрос fetch');
-    return response.json(); // пытаемся превратить кашу в что-то читаемое
-  })
+fetch('./assets/js/dadfvbdfta.json')
+  .then((response) => response.json(),(err)=>{console.log('обработка ошибок в then')})
   .then((data) => {
-    console.log('превратили данные в джаваскриптовый массив');
     console.log(data);
+  })
+  .catch((err) => {
+    console.log('обработка ошибок в catch');
   });
-
-console.log(fetchResult);
