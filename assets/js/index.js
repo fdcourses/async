@@ -17,4 +17,16 @@ const result = fetch('./assets/js/data.json')
     loadDiv.remove();
   });
 
-  //
+const resolvedPromise = new Promise((res, rej)=> {
+  res(42);
+});
+
+const resolvedPromise2 = Promise.resolve(42);
+
+const rejectedPromise = Promise.reject(42).catch((err) => {console.log(err)});
+
+function handlePromise(promise) {
+  return promise.then((data) => {
+    console.log(`Promise data is  ${data}`);
+  }, (err) =>{console.log(`Rejected withd error ${err}`)});
+}
