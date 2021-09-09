@@ -1,42 +1,20 @@
 'use strict';
 
-// ====================================================================
-fetch('./assets/js/dadfvbdfta.json')
-  .then(
-    (response) => response.json(),
-    (err) => {
-      console.log('обработка ошибок в then');
-    }
-  )
+// fetch('http://192.168.1.149:3000/api/users')
+
+const loadDiv = document.getElementById('load');
+
+const result = fetch('./assets/js/data.json')
+  .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    const jsonString = JSON.stringify(data, null, 4);
+    document.body.append(jsonString);
   })
   .catch((err) => {
-    console.log('обработка ошибок в catch');
+    document.body.append('error happende');
+  })
+  .finally(() => {
+    loadDiv.remove();
   });
 
-function exec(resolve, reject) {
-  resolve();
-  reject();
-}
-
-const promise = new Promise(exec);
-
-const ratPromise = new Promise((resolve, reject) => {
-  const verdict = Math.random();
-
-  if (verdict > 0.5) {
-    resolve('крыса жива');
-  } else {
-    reject('крыса почти жива');
-  }
-});
-
-ratPromise.then(
-  (data) => {
-    console.log(data);
-  },
-  (errorData) => {
-    console.log(errorData);
-  }
-);
+  //
